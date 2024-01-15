@@ -1,4 +1,3 @@
-from .utils.color import extract_pad_color
 import torch
 from .categories import CATE_TEST
 

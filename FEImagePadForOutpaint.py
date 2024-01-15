@@ -1,4 +1,4 @@
-from .utils.color import extract_pad_color
+from .utils.color import extract_pad_color, get_empty_color
 from .categories import CATE_IMAGE
 import torch
 
@@ -20,7 +20,7 @@ class FEImagePadForOutpaint:
                 "right": ("INT", {"default": 0, "min": 0, "max": MAX_RESOLUTION, "step": 8}),
                 "bottom": ("INT", {"default": 0, "min": 0, "max": MAX_RESOLUTION, "step": 8}),
                 "feathering": ("INT", {"default": 50, "min": 0, "max": MAX_RESOLUTION, "step": 1}),
-                "pad_color": ("RGB_COLOR", {"default": {"red": 0, "green": 0, "blue": 0}}),
+                "pad_color": ("RGB_COLOR", {"default": get_empty_color()}),
             }
         }
 
@@ -31,9 +31,12 @@ class FEImagePadForOutpaint:
     def expand_image(self, image, left, top, right, bottom, feathering, pad_color):
         batch_size, img_h, img_w, colors = image.size()
 
-        r, g, b = extract_pad_color(pad_color)
-        new_image = torch.tensor([[[r / 255, g / 255, b / 255]]]).repeat(batch_size, img_h + top + bottom,
-                                                                         img_w + left + right, 1)
+        colors = extract_pad_color(pad_color, batch_size) / 255
+        new_image = torch.ones(
+            (batch_size, img_h + top + bottom, img_w + left + right, 3),
+            dtype=torch.float32,
+        ).expand(batch_size, -1, -1, -1) * colors.view(batch_size, 1, 1, 3)
+
         new_image[:, top:top + img_h, left:left + img_w, :] = image
 
         mask = torch.ones(

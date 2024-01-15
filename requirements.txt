@@ -1,0 +1,2 @@
+pycryptodome
+sseclient-py

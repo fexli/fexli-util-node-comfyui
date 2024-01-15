@@ -1,4 +1,5 @@
 from .categories import CATE_UTILS
+from .utils.color import pad_color
 
 
 class FEColorOut:
@@ -22,9 +23,4 @@ class FEColorOut:
     CATEGORY = CATE_UTILS
 
     def send_color(self, red, green, blue):
-        c = {
-            "red": red,
-            "green": green,
-            "blue": blue,
-        }
-        return (c,)
+        return (pad_color(red, green, blue, -1),)
