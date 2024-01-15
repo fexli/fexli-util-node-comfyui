@@ -1,5 +1,4 @@
 from .categories import CATE_UTILS
-from .utils.any_hack import any
 
 
 class FETextCombine:
@@ -8,7 +7,7 @@ class FETextCombine:
     def INPUT_TYPES(cls):
         return {
             "required": {},
-            "optional": {"input": (any, {"default": None})},
+            "optional": {"input": ("STRING", {"default": "", 'forceInput': True})},
         }
 
     @classmethod
@@ -21,5 +20,9 @@ class FETextCombine:
     CATEGORY = CATE_UTILS
 
     def out(self, **kwargs):
-        output = "".join([str(_) for _ in list(kwargs.values()) if _ is not None])
+        if kwargs.get('input') == 'undefined':
+            kwargs['input'] = ''
+        if "input" in kwargs and not kwargs["input"]:
+            del kwargs['input']
+        output = "".join([str(_) for _ in list(kwargs.values())])
         return (output,)

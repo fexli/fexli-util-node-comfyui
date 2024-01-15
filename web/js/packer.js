@@ -46,12 +46,17 @@ app.registerExtension({
                     }
                 }
             }
+            if (nodeData.name == "FETextCombine"){
+                // remove widgets
+                this.widgets = []
+                this.widgets_values = []
+            }
         }
 
 
         if (FE_DATA_UNPACKER.includes(nodeData.name)) {
             nodeType.prototype.onConnectionsChange = function (type, _, connected, link_info) {
-                console.log("onConnectionsChange", this)
+                // console.log("onConnectionsChange", this)
                 for (let i = 0; i < this.outputs.length - 1; i++) {
                     if (!this.outputs[i].links || this.outputs[i].links.length === 0) {
                         console.log("onConnectionsChange pop", i, this.removeOutput(i--));
