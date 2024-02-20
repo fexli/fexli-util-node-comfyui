@@ -25,6 +25,8 @@ from .FEDictPacker import FEDictPacker
 from .FEEncLoraLoader import FEEncLoraLoader
 from .FEBCPrompt import FEBCPrompt
 from .FERerouteWithName import FERerouteWithName
+from .FETextCombine2Any import FETextCombine2Any
+from .FERandomBool import FERandomBool
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -54,6 +56,8 @@ NODE_CLASS_MAPPINGS = {
     "FEEncLoraLoader": FEEncLoraLoader,
     "FEBCPrompt": FEBCPrompt,
     "FERerouteWithName": FERerouteWithName,
+    "FETextCombine2Any": FETextCombine2Any,
+    "FERandomBool": FERandomBool,
 }
 
 WEB_DIRECTORY = "./web"

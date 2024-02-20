@@ -1,7 +1,7 @@
 import {app} from "../../../scripts/app.js";
 import {ComfyWidgets} from "../../../scripts/widgets.js";
 
-const FE_DATA_PACKER = ["FEDataPacker", "FEDictPacker", "FETextCombine"];
+const FE_DATA_PACKER = ["FEDataPacker", "FEDictPacker", "FETextCombine", "FETextCombine2Any"];
 const FE_DATA_UNPACKER = ["FEDataUnpacker", "FEDictUnpacker"];
 const FORBIDDEN_INPUT_FIELDS = ["in_field"];
 const LAST_TYPE = Symbol("LastType");
@@ -45,11 +45,6 @@ app.registerExtension({
                         this.removeOutput(i--);
                     }
                 }
-            }
-            if (nodeData.name == "FETextCombine"){
-                // remove widgets
-                this.widgets = []
-                this.widgets_values = []
             }
         }
 

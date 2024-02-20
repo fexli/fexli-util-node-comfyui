@@ -1,8 +1,9 @@
 from .categories import CATE_UTILS
 from .utils.any_hack import any
+from .utils.node_defs import FEAlwaysChangeNode
 
 
-class FERerouteWithName:
+class FERerouteWithName(FEAlwaysChangeNode):
 
     @classmethod
     def INPUT_TYPES(cls):
