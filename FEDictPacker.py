@@ -22,7 +22,6 @@ class FEDictPacker:
     CATEGORY = CATE_UTILS
 
     def pack(self, in_field, **kwargs):
-        print("FEDictPacker.pack",kwargs)
         ret = {}
         for i, e in enumerate([_ for _ in in_field.split(",")]):
             ret[e] = list(kwargs.values())[int(i)]

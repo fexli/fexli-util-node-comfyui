@@ -22,5 +22,4 @@ class FEDictUnpacker:
     CATEGORY = CATE_UTILS
 
     def unpack(self, input_dict, out_field):
-        print("input_dict",input_dict)
         return tuple([input_dict.get(_) for _ in out_field.split(",")])

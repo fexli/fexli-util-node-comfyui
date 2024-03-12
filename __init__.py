@@ -27,6 +27,7 @@ from .FEBCPrompt import FEBCPrompt
 from .FERerouteWithName import FERerouteWithName
 from .FETextCombine2Any import FETextCombine2Any
 from .FERandomBool import FERandomBool
+from .FEInterruptCondition import FEInterruptCondition
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -58,6 +59,7 @@ NODE_CLASS_MAPPINGS = {
     "FERerouteWithName": FERerouteWithName,
     "FETextCombine2Any": FETextCombine2Any,
     "FERandomBool": FERandomBool,
+    "FEInterruptCondition": FEInterruptCondition,
 }
 
 WEB_DIRECTORY = "./web"
