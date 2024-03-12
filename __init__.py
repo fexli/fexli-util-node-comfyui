@@ -28,6 +28,8 @@ from .FERerouteWithName import FERerouteWithName
 from .FETextCombine2Any import FETextCombine2Any
 from .FERandomBool import FERandomBool
 from .FEInterruptCondition import FEInterruptCondition
+from .FEDictCombine import FEDictCombine
+from .FEAnyToDict import FEAnyToDict
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -60,6 +62,8 @@ NODE_CLASS_MAPPINGS = {
     "FETextCombine2Any": FETextCombine2Any,
     "FERandomBool": FERandomBool,
     "FEInterruptCondition": FEInterruptCondition,
+    "FEDictCombine": FEDictCombine,
+    "FEAnyToDict": FEAnyToDict,
 }
 
 WEB_DIRECTORY = "./web"

@@ -1,7 +1,7 @@
 import {app} from "../../../scripts/app.js";
 import {ComfyWidgets} from "../../../scripts/widgets.js";
 
-const FE_DATA_PACKER = ["FEDataPacker", "FEDictPacker", "FETextCombine", "FETextCombine2Any"];
+const FE_DATA_PACKER = ["FEDataPacker", "FEDictPacker", "FETextCombine", "FEDictCombine", "FETextCombine2Any"];
 const FE_DATA_UNPACKER = ["FEDataUnpacker", "FEDictUnpacker"];
 const FORBIDDEN_INPUT_FIELDS = ["in_field"];
 const LAST_TYPE = Symbol("LastType");
