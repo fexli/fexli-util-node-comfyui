@@ -30,6 +30,7 @@ from .FERandomBool import FERandomBool
 from .FEInterruptCondition import FEInterruptCondition
 from .FEDictCombine import FEDictCombine
 from .FEAnyToDict import FEAnyToDict
+from .FEGenStringNBus import FEGenStringNBus
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -64,6 +65,7 @@ NODE_CLASS_MAPPINGS = {
     "FEInterruptCondition": FEInterruptCondition,
     "FEDictCombine": FEDictCombine,
     "FEAnyToDict": FEAnyToDict,
+    "FEGenStringNBus": FEGenStringNBus,
 }
 
 WEB_DIRECTORY = "./web"

@@ -2,3 +2,4 @@ bc_docker_api: "http://127.0.0.1:8009/generate"
 openai_key: "sk-"
 openai_host:
   - "https://api.openai.com/v1/chat/completions"
+nbus_api: "http://127.0.0.1:24113/v1/chat/completions"

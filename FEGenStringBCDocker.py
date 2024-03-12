@@ -56,5 +56,5 @@ class FEGenStringBCDocker(FEAlwaysChangeNode):
                 max_new_tokens=max_new_tokens, top_p=top_p, top_k=top_k):
             result += _
             # print(_, end="")
-        print("...done")
+        print("done")
         return (result, {},)

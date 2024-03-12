@@ -55,5 +55,5 @@ class FEGenStringGPT(FEAlwaysChangeNode):
                 api=api):
             result += _
             print(_, end="")
-        print("...done")
+        print("done")
         return (result, {},)
