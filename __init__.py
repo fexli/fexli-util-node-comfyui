@@ -31,6 +31,7 @@ from .FEInterruptCondition import FEInterruptCondition
 from .FEDictCombine import FEDictCombine
 from .FEAnyToDict import FEAnyToDict
 from .FEGenStringNBus import FEGenStringNBus
+from .FEAnyToString import FEAnyToString
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -66,6 +67,7 @@ NODE_CLASS_MAPPINGS = {
     "FEDictCombine": FEDictCombine,
     "FEAnyToDict": FEAnyToDict,
     "FEGenStringNBus": FEGenStringNBus,
+    "FEAnyToString": FEAnyToString,
 }
 
 WEB_DIRECTORY = "./web"
