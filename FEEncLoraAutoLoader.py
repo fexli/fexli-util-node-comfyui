@@ -20,7 +20,7 @@ class LoraRef:
 
 
 def find_model(text, model_name):
-    pattern = r'<' + re.escape(model_name) + r':(\d+(?:\.\d+)?):(\d+(?:\.\d+)?)>'
+    pattern = r'<lora:' + re.escape(model_name) + r':(\d+(?:\.\d+)?):(\d+(?:\.\d+)?)>'
     match = re.search(pattern, text)
 
     if match:
@@ -71,36 +71,27 @@ class FEEncLoraAutoLoader(LoraLoader, FELoraEmpFinder):
         auto_loras = read_automap("loras")
         lora_need_load = []  # type:List[LoraRef]
         pe = str(prompt)
-        pe_lower = pe.lower()
+        pe_lower = pe  # .lower()
         for lora_name, lora_setting in auto_loras.items():
-            need_load = False
-            model_s = lora_setting.get("strength_model", 0.5)
-            clip_s = lora_setting.get("strength_clip", 0.7)
             if lora_setting.get("model", "?") != model_type:
                 continue
-            for tw in lora_setting.get("trigger_word", []):
-                if tw not in pe_lower:
-                    continue
-                need_load = True
-                # 存在，检查是否为<xx:x:x>
-                lora_find_rs = find_model(pe_lower, tw)
-                if lora_find_rs is not None:
-                    pe = pe[:lora_find_rs[0]] + self.get_replace(lora_setting, tw) + pe[lora_find_rs[3]:]
-                    pe_lower = pe
-                    model_s = lora_find_rs[1]
-                    clip_s = lora_find_rs[2]
-                else:
-                    idx = pe_lower.index(tw)
-                    lens = len(tw)
-                    pe = pe[:idx] + self.get_replace(lora_setting, tw) + pe[idx + lens:]
-                break
-
-            if need_load:
-                lora_need_load.append(LoraRef(lora_name, model_s, clip_s))
+            tw = lora_setting.get("trigger_word", "")
+            if tw == "" or tw not in pe_lower:
+                continue
+            # 存在，检查是否为<xx:f:f>
+            lora_find_rs = find_model(pe_lower, tw)
+            if lora_find_rs is None:
+                continue
+            pe = pe[:lora_find_rs[0]] + pe[lora_find_rs[3]:]
+            pe_lower = pe
+            model_s = lora_find_rs[1]
+            clip_s = lora_find_rs[2]
+            lora_need_load.append(LoraRef(lora_name, model_s, clip_s))
 
         m = model
         c = clip
         # result = []
+        lcnt = 0
 
         for lora_ref in lora_need_load:
             lora_name = self.find_current_lora(lora_ref.name)
@@ -113,8 +104,9 @@ class FEEncLoraAutoLoader(LoraLoader, FELoraEmpFinder):
                 continue
             try:
                 m, c = super().load_lora(m, c, lora_name, lora_ref.model_s, lora_ref.clip_s)
+                lcnt += 1
             except:
                 print("Failed to load lora with error occur", lora_ref.name)
                 raise
-
+        print("Auto Load", lcnt, "LLor ClipData")
         return (m, c, pe, {},)

@@ -83,6 +83,11 @@ class FESaveEncryptImage:
 
                 with open(os.path.join(full_output_folder, file), "wb") as f:
                     f.write(outio.getvalue())
+                results.append({
+                    "filename": file,
+                    "subfolder": subfolder,
+                    "type": self.type
+                })
             else:
                 file = f"{filename}_{counter:05}_.png"
                 img.save(os.path.join(full_output_folder, file), pnginfo=metadata, compress_level=4)

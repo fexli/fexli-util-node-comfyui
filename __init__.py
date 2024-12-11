@@ -32,6 +32,8 @@ from .FEDictCombine import FEDictCombine
 from .FEAnyToDict import FEAnyToDict
 from .FEGenStringNBus import FEGenStringNBus
 from .FEAnyToString import FEAnyToString
+from .FEEncLoraAutoLoader import FEEncLoraAutoLoader
+from .FELoadImageQQUrl import FELoadImageQQUrl
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -45,7 +47,7 @@ NODE_CLASS_MAPPINGS = {
     "FEGenStringBCDocker": FEGenStringBCDocker,
     "FETextInput": FETextInput,
     "FETextCombine": FETextCombine,
-    "FEPythonStrOp": FEPythonStrOp,
+    # "FEPythonStrOp": FEPythonStrOp,
     "FEDataPacker": FEDataPacker,
     "FEDataUnpacker": FEDataUnpacker,
     "FEBatchGenStringBCDocker": FEBatchGenStringBCDocker,
@@ -68,6 +70,8 @@ NODE_CLASS_MAPPINGS = {
     "FEAnyToDict": FEAnyToDict,
     "FEGenStringNBus": FEGenStringNBus,
     "FEAnyToString": FEAnyToString,
+    "FEEncLoraAutoLoader": FEEncLoraAutoLoader,
+    "FELoadImageQQUrl": FELoadImageQQUrl,
 }
 
 WEB_DIRECTORY = "./web"
