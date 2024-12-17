@@ -72,6 +72,19 @@ class FEEncLoraAutoLoader(LoraLoader, FELoraEmpFinder):
         lora_need_load = []  # type:List[LoraRef]
         pe = str(prompt)
         pe_lower = pe  # .lower()
+
+        # lora_pure_names
+        for lora_name, tw in [(_, _.split("]")[-1].rsplit(".", 1)[0]) for _ in self.EMP_CACHE.keys()]:
+            lora_find_rs = find_model(pe_lower, tw)
+            if lora_find_rs is None:
+                continue
+            pe = pe[:lora_find_rs[0]] + pe[lora_find_rs[3]:]
+            pe_lower = pe
+            model_s = lora_find_rs[1]
+            clip_s = lora_find_rs[2]
+            lora_need_load.append(LoraRef(lora_name, model_s, clip_s))
+
+        # auto lora maps
         for lora_name, lora_setting in auto_loras.items():
             if lora_setting.get("model", "?") != model_type:
                 continue
