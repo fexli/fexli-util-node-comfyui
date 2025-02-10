@@ -13,6 +13,16 @@ from io import BytesIO
 import numpy as np
 import json
 import os
+import binascii
+
+
+def get_md5(bys: bytes):
+    return hashlib.md5(bys).digest()
+
+
+def bytes_to_str(bys: bytes):
+    hex_str = binascii.hexlify(bys)
+    return hex_str.decode()
 
 
 class FESaveEncryptImage:
@@ -73,7 +83,7 @@ class FESaveEncryptImage:
                 img.save(imgio, "PNG", pnginfo=metadata, compress_level=4)
 
                 key = hashlib.sha256(password.encode("utf-8")).digest()
-                iv = get_random_bytes(16)
+                iv = get_md5(imgio.getvalue())
                 cipher = AES.new(key, AES.MODE_CBC, iv)
                 cipher_text = cipher.encrypt(pad(imgio.getvalue(), AES.block_size))
                 outio = BytesIO()

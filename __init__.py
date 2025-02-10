@@ -34,6 +34,7 @@ from .FEGenStringNBus import FEGenStringNBus
 from .FEAnyToString import FEAnyToString
 from .FEEncLoraAutoLoader import FEEncLoraAutoLoader
 from .FELoadImageQQUrl import FELoadImageQQUrl
+from .FEEncLoraAutoLoaderStack import FEEncLoraAutoLoaderStack
 
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
@@ -72,6 +73,7 @@ NODE_CLASS_MAPPINGS = {
     "FEAnyToString": FEAnyToString,
     "FEEncLoraAutoLoader": FEEncLoraAutoLoader,
     "FELoadImageQQUrl": FELoadImageQQUrl,
+    "FEEncLoraAutoLoaderStack": FEEncLoraAutoLoaderStack,
 }
 
 WEB_DIRECTORY = "./web"
