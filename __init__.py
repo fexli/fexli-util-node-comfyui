@@ -36,6 +36,12 @@ from .FEEncLoraAutoLoader import FEEncLoraAutoLoader
 from .FELoadImageQQUrl import FELoadImageQQUrl
 from .FEEncLoraAutoLoaderStack import FEEncLoraAutoLoaderStack
 
+from server import PromptServer  # noqa
+from .extra_info_routers import register as ei_register
+
+routes = PromptServer.instance.routes
+ei_register("exinfo", routes)
+
 NODE_CLASS_MAPPINGS = {
     "FEImagePadForOutpaint": FEImagePadForOutpaint,
     "FEColorOut": FEColorOut,
