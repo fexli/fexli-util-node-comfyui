@@ -1,0 +1,15 @@
+[project]
+name = "fexli-util-node-comfyui"
+description = "Nodes:FEImagePadForOutpaint, FEColorOut, FEColor2Image, FERandomizedColor2Image"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["pycryptodome", "sseclient-py"]
+
+[project.urls]
+Repository = "https://github.com/fexli/fexli-util-node-comfyui"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "fexli-util-node-comfyui"
+Icon = ""
