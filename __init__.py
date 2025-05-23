@@ -9,7 +9,6 @@ from .FEImageNoiseGenerate import FEImageNoiseGenerate
 from .FEGenStringBCDocker import FEGenStringBCDocker
 from .FETextInput import FETextInput
 from .FETextCombine import FETextCombine
-from .FEPythonStrOp import FEPythonStrOp
 from .FEDataPacker import FEDataPacker
 from .FEDataUnpacker import FEDataUnpacker
 from .FEBatchGenStringBCDocker import FEBatchGenStringBCDocker
